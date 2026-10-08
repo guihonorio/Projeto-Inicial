@@ -1,40 +1,50 @@
-import { StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
-import Aluno from '@/components/Aluno';
-import Funcionario from '@/components/Funcionario';
-import Multiplicacao from '@/components/Multiplicacao';
+import DadosAluno from '@/components/DadosAluno';
+import MultiplicacaoCampos from '@/components/MultiplicacaoCampos';
+import NomeSobrenome from '@/components/NomeSobrenome';
 
 export default function HomeScreen() {
   return (
-    <View style={styles.container}>
-      <Funcionario
-        nome="João"
-        idade={25}
-        setor="TI"
-      />
+    <ScrollView contentContainerStyle={styles.container}>
 
-      <Aluno
-        nome="Guilherme"
-        idade={20}
-        turma="ADS"
-        nota1={8}
-        nota2={9}
-      />
+      <View style={styles.exercicio}>
+        <Text style={styles.titulo}>Exercício 1 - Nome e Sobrenome</Text>
+        <NomeSobrenome />
+      </View>
 
-      <Multiplicacao
-        valor1={2}
-        valor2={3}
-        valor3={4}
-      />
-    </View>
+      <View style={styles.exercicio}>
+        <Text style={styles.titulo}>Exercício 2 - Dados do Aluno</Text>
+        <DadosAluno />
+      </View>
+
+      <View style={styles.exercicio}>
+        <Text style={styles.titulo}>Exercício 3 - Multiplicação</Text>
+        <MultiplicacaoCampos />
+      </View>
+
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
+    flexGrow: 1,
     padding: 20,
-    gap: 30,
+    gap: 20,
+  },
+
+  exercicio: {
+    borderWidth: 1,
+    borderColor: '#cccccc',
+    borderRadius: 10,
+    padding: 20,
+    backgroundColor: '#ffffff',
+  },
+
+  titulo: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 15,
   },
 });
